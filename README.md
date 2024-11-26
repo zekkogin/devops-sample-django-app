@@ -13,6 +13,19 @@
    ```shell
          docker-compose -f docker-compose.override.yml --env-file django.env up --build
    ```
+* Все enviroments поля находятся в django.env
+  Для ручной настройки
+  ```shell
+     EXPOSE DJANGO_DB_HOST=db
+     EXPOSE DJANGO_DB_NAME=app
+     EXPOSE DJANGO_DB_USER=worker
+     EXPOSE DJANGO_DB_PASS=worker
+     EXPOSE DJANGO_DB_PORT="5432"
+     EXPOSE DJANGO_DEBUG="False"
+  ```
+  ```shell
+     docker-compose -f docker-compose.override.yml up --build
+  ```
 ____
 
 ## Зависимости 
