@@ -14,6 +14,23 @@
    ```shell
       docker-compose -f docker-compose.override.yml --env-file django.env up --build
    ```
+
+## Откройте в браузере
+
+   (http://localhost:8000)
+
+
+## Остановка контейнеров
+
+   ```shell
+      docker-compose -f docker-compose.override.yml down
+   ```
+
+## Для удаления данных
+
+   ```shell
+      docker-compose -f docker-compose.override.yml down -v
+   ```
 ____
 
 * Для ручной настройки enviroments
