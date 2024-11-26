@@ -10,11 +10,14 @@
 Для запуска используйте docker и docker-compose. Подробнее о установке искать [тут](https://docs.docker.com/compose/install/).
 
 ## Сбор и запуск контейнеров
+
    ```shell
-         docker-compose -f docker-compose.override.yml --env-file django.env up --build
+      docker-compose -f docker-compose.override.yml --env-file django.env up --build
    ```
-* Все enviroments поля находятся в django.env
-  Для ручной настройки
+____
+
+* Для ручной настройки enviroments
+
   ```shell
      EXPOSE DJANGO_DB_HOST=db
      EXPOSE DJANGO_DB_NAME=app
@@ -23,6 +26,7 @@
      EXPOSE DJANGO_DB_PORT="5432"
      EXPOSE DJANGO_DEBUG="False"
   ```
+  
   ```shell
      docker-compose -f docker-compose.override.yml up --build
   ```
@@ -34,8 +38,7 @@ ____
 - psycopg2-binary 2.9.3
 - django-prometheus 2.2.0
 - uWSGI 2.0.20
-<h3>Deployment</h3>
-
+  
 ____
 # Установка вручную
 
