@@ -2,7 +2,7 @@
 services:
   db:
     image: postgres:14
-    container_name: postgres
+    container_name: postgres_${RANDOM_SUFFIX:-$(date +%s)}
     environment:
       POSTGRES_DB: ${DJANGO_DB_NAME}
       POSTGRES_USER: ${DJANGO_DB_USER}
