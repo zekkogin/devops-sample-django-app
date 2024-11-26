@@ -5,23 +5,26 @@
 <br>
 <h3></h3>
 
-Sample Python application on Django with PostgreSQL database.
+# Запуск проекта через docker-compose
 
-<h3>Requirements</h3>
+Для запуска используйте docker и docker-compose. Подробнее о установке искать [тут](https://docs.docker.com/compose/install/).
 
+## Сбор и запуск контейнеров
+   ```shell
+         docker-compose -f docker-compose.override.yml --env-file django.env up --build
+   ```
 ____
 
-
+## Зависимости 
 - django 4.0.1
 - Pillow 9.0.0
 - psycopg2-binary 2.9.3
 - django-prometheus 2.2.0
-
+- uWSGI 2.0.20
 <h3>Deployment</h3>
 
 ____
-
-
+# Установка вручную
 
 - install Python 3.8
 - install libs 
@@ -39,7 +42,6 @@ ____
       DJANGO_DEBUG: "False"
 ```
 
-
 * migrate database:
 ```shell
 python3 manage.py migrate
@@ -47,5 +49,5 @@ python3 manage.py migrate
 
 * start application:
 ```shell
-python3 manage.py runserver 0.0.0.0:8000
+python3 manage.py uwsgi uwsgi.ini
 ```
