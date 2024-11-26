@@ -1,0 +1,32 @@
+
+services:
+  db:
+    image: postgres:14
+    container_name: postgres
+    environment:
+      POSTGRES_DB: ${DJANGO_DB_NAME}
+      POSTGRES_USER: ${DJANGO_DB_USER}
+      POSTGRES_PASSWORD: ${DJANGO_DB_PASS}
+    ports:
+      - "5432:5432"
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: parrots-django
+    environment:
+      DJANGO_DB_HOST: ${DJANGO_DB_HOST}
+      DJANGO_DB_NAME: ${DJANGO_DB_NAME}
+      DJANGO_DB_USER: ${DJANGO_DB_USER}
+      DJANGO_DB_PASS: ${DJANGO_DB_PASS}
+      DJANGO_DB_PORT: ${DJANGO_DB_PORT}
+      DJANGO_DEBUG: ${DJANGO_DEBUG}
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+
+
